@@ -1,2 +1,2 @@
-addSbtPlugin("io.github.fkz" % "sbt-rewrite-imports" % "0.2.6")
+addSbtPlugin("io.github.fkz" % "sbt-rewrite-imports" % "0.3.0")
 

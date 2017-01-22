@@ -1,4 +1,4 @@
-val currentVersion = "0.2.6"
+val currentVersion = "0.3.0"
 
 publishArtifact := false
 
