@@ -21,7 +21,7 @@ object SbtImportRemovePlugin2 extends AutoPlugin {
       scalacOptions ++= {
         val dep = update.value.toSeq.find {
           case (conf, moduleId, artifact, file) =>
-            moduleId.organization == "com.github.fkz" && moduleId.name.startsWith("rewrite-imports")
+            moduleId.organization == "io.github.fkz" && moduleId.name.startsWith("rewrite-imports")
         }
         val v = dep.getOrElse(throw new Exception("fatal: sbt import plugin hasn't found scalac plugin rewrite-imports"))
         
@@ -33,7 +33,7 @@ object SbtImportRemovePlugin2 extends AutoPlugin {
 
         s"-Xplugin:${v._4.getAbsolutePath}" +: mapImports
       },
-      libraryDependencies += "com.github.fkz" %% "rewrite-imports" % "0.2.0"
+      libraryDependencies += "io.github.fkz" %% "rewrite-imports" % "0.2.0"
     )
   }
 }
