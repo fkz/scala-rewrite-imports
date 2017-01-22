@@ -5,4 +5,4 @@ scala:
    - 2.12.1
 script:
    - sbt "set scalaVersion := \"$TRAVIS_SCALA_VERSION\"" publishLocal
-   - test/sbt ++$TRAVIS_SCALA_VERSION run
+   - cd test && sbt ++$TRAVIS_SCALA_VERSION run
