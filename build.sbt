@@ -10,7 +10,7 @@ lazy val scalacPlugin = (project in file("scalac-plugin")).settings(
 lazy val scalacPlugin_2_12 = scalacPlugin("2.12.1").settings(name := "rewrite-imports")
 lazy val scalacPlugin_2_11 = scalacPlugin("2.11.8").settings(name := "rewrite-imports")
 
-lazy val sbt = project.in(file("sbtplugin"))
+lazy val sbtProject = project.in(file("sbtplugin"))
    .enablePlugins(BuildInfoPlugin)
    .settings(
   sbtPlugin := true,
