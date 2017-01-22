@@ -1,0 +1,4 @@
+<plugin>
+    <name>kind-projector</name>
+    <classname>fkz.ImportPlugin</classname>
+</plugin>
