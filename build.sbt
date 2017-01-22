@@ -1,5 +1,7 @@
 val currentVersion = "0.2.6"
 
+publishArtifact := false
+
 lazy val scalacPlugin = (project in file("scalac-plugin")).settings(
   name := "rewrite-imports",
   organization := "io.github.fkz",
