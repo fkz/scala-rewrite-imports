@@ -5,9 +5,6 @@ import sbt.{AllRequirements, AutoPlugin, File, PluginTrigger}
 import sbt.Keys._
 import sbt._
 
-/**
-  * Created by fabian on 11/23/16.
-  */
 object SbtImportRemovePlugin2 extends AutoPlugin {
   object autoImport {
     val importMappings = SettingKey[Seq[(String, Option[String])]]("import-mappings", "defines mappings of prefixes of imports. When None is used as second argument, imports get filtered")
@@ -33,7 +30,7 @@ object SbtImportRemovePlugin2 extends AutoPlugin {
 
         s"-Xplugin:${v._4.getAbsolutePath}" +: mapImports
       },
-      libraryDependencies += "io.github.fkz" %% "rewrite-imports" % "0.2.0"
+      libraryDependencies += "io.github.fkz" %% "rewrite-imports" % BuildInfo.version
     )
   }
 }

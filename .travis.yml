@@ -1,9 +1,6 @@
 language: scala
 jdk:
    - oraclejdk8
-scala:
-   - 2.11.8
-   - 2.12.1
 script:
-   - sbt "set scalaVersion := \"$TRAVIS_SCALA_VERSION\"" publishLocal
-   - cd test && sbt ++$TRAVIS_SCALA_VERSION run
+   - sbt publishLocal
+   - cd test && sbt +run
