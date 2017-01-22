@@ -3,4 +3,4 @@ jdk:
    - oraclejdk8
 script:
    - sbt publishLocal
-   - cd test && sbt +run
+   - cd example && sbt +run

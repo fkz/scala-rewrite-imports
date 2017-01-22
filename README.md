@@ -8,7 +8,7 @@ Unfortunately, macros can't be used for that, because imports can't be prefixed 
 
 Usage
 =====
-In the subfolder test, you see an example of how this plugin can be used.
+In the subfolder example, you see an example of how this plugin can be used.
 
 Add the following to your `project/build.sbt`:
 
