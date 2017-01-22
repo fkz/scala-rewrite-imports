@@ -1,5 +1,7 @@
 Overview
 ========
+[![Build Status](https://travis-ci.org/fkz/scala-rewrite-imports.svg?branch=master)](https://travis-ci.org/fkz/scala-rewrite-imports)
+
 This is a scalac plugin and corresponding sbt plugin, that lets you rewrite import statements depending on configuration.
 One use case may be to use different libraries depending on configuration which in turn have different prefixes.
 Unfortunately, macros can't be used for that, because imports can't be prefixed by an annotation.
