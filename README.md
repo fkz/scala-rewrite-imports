@@ -22,3 +22,8 @@ Then you can define mappings of import prefixes in your `build.sbt`:
 importMappings += ("com.filter.this.prefix", None)
 importMappings += ("com.somelibrary1", Some("com.replacementlibrary"))
 ```
+
+Issues
+======
+
+
