@@ -65,20 +65,16 @@ class RemoveImportComponent(val global: Global) extends PluginComponent with Tra
     }
     else {
       val subst = options.mapPrefix.find { case (from, to) => str.startsWith(from) }
-      val substituted = {
-        subst match {
-          case None =>
-            inform(importSelection.pos, s"no rule matches '${str}', leaving as is")
-            str
-          case Some((from, to)) =>
-            val res = to + str.substring(from.length)
-            inform(importSelection.pos, s"replacing '${str}' with '${res}")
-            res
-        }
+      subst match {
+        case None =>
+          //inform(importSelection.pos, s"no rule matches '${str}', leaving as is")
+          Some(importSelection)
+        case Some((from, to)) =>
+          val res = to + str.substring(from.length)
+          inform(importSelection.pos, s"replacing '${str}' with '${res}")
+          val substitutedList = res.split('.')
+          Some(substitutedList.tail.foldLeft[Tree](Ident(TermName(substitutedList.head)))((b, str) => Select(b, TermName(str))))
       }
-
-      val substitutedList = substituted.split('.')
-      Some(substitutedList.tail.foldLeft[Tree](Ident(TermName(substitutedList.head)))((b, str) => Select(b, TermName(str))))
     }
   }
 
