@@ -14,7 +14,7 @@ In the subfolder example, you see an example of how this plugin can be used.
 Add the following to your `project/build.sbt`:
 
 ```scala
-addSbtPlugin("io.github.fkz" % "sbt-rewrite-imports" % "0.3.0")
+addSbtPlugin("io.github.fkz" % "sbt-rewrite-imports" % "0.3.1")
 ```
 
 Then you can define mappings of import prefixes in your `build.sbt`:

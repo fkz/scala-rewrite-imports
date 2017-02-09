@@ -65,22 +65,19 @@ class RemoveImportComponent(val global: Global) extends PluginComponent with Tra
     }
     else {
       val subst = options.mapPrefix.find { case (from, to) => str.startsWith(from) }
-      val substituted = {
-        subst match {
-          case None =>
-            inform(importSelection.pos, s"no rule matches '${str}', leaving as is")
-            str
-          case Some((from, to)) =>
-            val res = to + str.substring(from.length)
-            inform(importSelection.pos, s"replacing '${str}' with '${res}")
-            res
-        }
+      subst match {
+        case None =>
+          inform(importSelection.pos, s"no rule matches '${str}', leaving as is")
+          Some(importSelection)
+        case Some((from, to)) =>
+          val substituted = to + str.substring(from.length)
+          inform(importSelection.pos, s"replacing '${str}' with '${substituted}")
+          val substitutedList = substituted.split('.')
+          val result = substitutedList.tail.foldLeft[Tree](Ident(TermName(substitutedList.head)))((b, str) => Select(b, TermName(str)))
+          Some(result.setPos(importSelection.pos))
       }
-
-      val substitutedList = substituted.split('.')
-      Some(substitutedList.tail.foldLeft[Tree](Ident(TermName(substitutedList.head)))((b, str) => Select(b, TermName(str))))
     }
-  }
+  } 
 
   class Transformer(unit: global.CompilationUnit) extends global.Transformer {
     override def transform(tree: global.Tree): global.Tree = {
